@@ -1,40 +1,11 @@
-<?php
+<?php require_once 'templates/_header.php'; ?>
+<?php require_once 'templates/navigation.php'; ?>
+<?php require_once 'models/Task.php'; ?>
+<?php require_once 'controllers/_authorization.php'; ?>
+<?php require_once 'controllers/tasks-add.php'; ?>
 
-require_once '_inc_.php';
-
-if(!empty($_POST)) {
-	// yeay! going to add new task!
-
-	$name = $_POST['name'];
-	$description = $_POST['description'];
-
-	$conn = connect();
-
-	$created_at = date('Y:m:d H:i:s');
-
-	$insert_statement = $conn->prepare("INSERT INTO `tasks` 
-	(`name`, `description`, `created_at`)
-	VALUES
-	(:name, :description, :created_at)");
-	$insert_statement->bindParam(':name', $name);
-	$insert_statement->bindParam(':description', $description);
-	$insert_statement->bindParam(':created_at', $created_at);
-	
-	if($insert_statement->execute()) {
-		header('Location: tasks.php');
-	}
-}
-
-
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>My Tasks</title>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
-<body>
-	<form method="post">
+<div class="container">
+<form method="post" class="form-horizontal">
 	<fieldset>
 
 	<!-- Form Name -->
@@ -44,7 +15,7 @@ if(!empty($_POST)) {
 	<div>
 	  <label for="name">Task Name</label>  
 	  <div>
-	  <input id="name" name="name" type="text" placeholder="Your task's name" required="">
+	  <input class="form-control" id="name" name="name" type="text" placeholder="Your task's name" required="">
 	    
 	  </div>
 	</div>
@@ -53,7 +24,7 @@ if(!empty($_POST)) {
 	<div>
 	  <label for="description">Task Description</label>
 	  <div>                     
-	    <textarea id="description" name="description">Enter your task description here</textarea>
+	    <textarea class="form-control" rows="7" id="description" name="description">Enter your task description here</textarea>
 	  </div>
 	</div>
 
@@ -66,8 +37,9 @@ if(!empty($_POST)) {
 	  </div>
 	</div>
 
+	<input type="hidden" name="user_id" value="<?= $_SESSION['user']['id']; ?>"></input>
+
 	</fieldset>
 	</form>
-</body>
-</html>
-
+</div>
+<?php require_once 'templates/_footer.php'; ?>

@@ -1,64 +1,10 @@
-<?php
+<?php require_once 'templates/_header.php'; ?>
+<?php require_once 'templates/navigation.php'; ?>
+<?php require_once 'models/Task.php'; ?>
+<?php require_once 'controllers/_authorization.php'; ?>
+<?php require_once 'controllers/tasks-update.php'; ?>
 
-require_once '_inc_.php';
-
-if(isset($_GET['id'])) {
-	$conn = connect();
-
-	$stmt = $conn->prepare("SELECT * FROM tasks WHERE id = ?");
-	$stmt->bindParam(1, $_GET['id']);
-	
-	if($stmt->execute()) {
-		$task = $stmt->fetch();
-	}
-
-	if(!empty($_POST)) {
-		d($_POST);
-		// do update
-		$id = $_POST['id'];
-		$name = $_POST['name'];
-		$description = $_POST['description'];
-		$status = $_POST['status'];
-		$updated_at = date('Y:m:d H:i:s');
-
-		$sql = "UPDATE `php_mbi`.`tasks` 
-		SET
-		`name` = :name , 
-		`description` = :description , 
-		`status` = :status ,  
-		`updated_at` = :updated_at
-		WHERE
-		`id` = :id";
-
-		$conn = connect();
-		$update_statement = $conn->prepare($sql);
-		$update_statement->bindParam(':name', $name);
-		$update_statement->bindParam(':description', $description);
-		$update_statement->bindParam(':status', $status);
-		$update_statement->bindParam(':updated_at', $updated_at);
-		$update_statement->bindParam(':id', $id);
-
-		if($update_statement->execute()) {
-			d('successfully update task');
-			header('Location: tasks.php');
-		} else {
-			d('failed to update task');
-		}
-	}
-
-} else {
-	header('Location: tasks.php');
-}
-
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>My Tasks</title>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
-<body>
-
+<div class="container">
 	<form class="form-horizontal" method="post">
 	<fieldset>
 
@@ -109,5 +55,5 @@ if(isset($_GET['id'])) {
 
 	</fieldset>
 	</form>
-</body>
-</html>
+</div>
+<?php require_once 'templates/_footer.php'; ?>
