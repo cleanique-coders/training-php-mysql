@@ -1,6 +1,6 @@
 <?php 
 
-require_once 'vendor/php-activerecord/ActiveRecord.php';
+require_once 'vendor/autoload.php';
 
 ActiveRecord\Config::initialize(function($cfg)
 {
