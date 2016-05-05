@@ -14,23 +14,26 @@ ActiveRecord\Config::initialize(function($cfg)
 });
 
 // find
-$task = Task::find(1);
-echo $task->name;
+// $task = Task::find(1);
+// echo $task->name;
+
+$user = User::find_by_username('nasrul');
+echo $user->username;
 
 // new task
 $task = new Task();
-$task->name = 'My first blog task!!';
+$task->name = 'asdsadas!!';
 $task->user_id = 1;
 $task->description = 'lorem ipsum';
 $task->created_at = date('Y-m-d H:i:s');
 $task->save();
 
-// update task
-$task = task::find(1);
+// // update task
+$task = Task::find(2);
 echo $task->name; # 'My first blog task!!'
 $task->name = 'Some real name';
 $task->save();
 
-// delete task
-$task = Task::find(1);
+// // delete task
+$task = Task::find(12);
 $task->delete();
