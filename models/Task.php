@@ -3,17 +3,18 @@
 class Task {
 
 	public static function findById($id) {
+
 		$conn = connect();
 
-		$select_statement = $conn->prepare('SELECT * FROM tasks WHERE id = :user_id');
-
-		$select_statement->bindParam(':user_id', $user_id);
-
-		if($select_statement->execute()) {
-			return $select_statement->fetch();
-		} else {
-			return false;
+		$stmt = $conn->prepare("SELECT * FROM tasks WHERE id = ?");
+		$stmt->bindParam(1, $id);
+		$task = null;
+		
+		if($stmt->execute()) {
+			$task = $stmt->fetch();
 		}
+		
+		return $task;
 	}
 
 	public static function list($user_id) {
