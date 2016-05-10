@@ -1,0 +1,39 @@
+/* 
+	Styling based on ID,  
+	Add hash-tag at the front
+	of the element's ID
+*/
+#heading-one {
+	color: black;
+}
+
+/* 
+	Styling based on class name,  
+	Add dot(.) at the front
+	of the class name
+*/
+.heading {
+	color: blue;
+}
+
+/* 
+	Styling based on element's name,  
+*/
+p {
+	color: green;
+	font-size: 20px;
+}
+
+/*
+	Grouping Styling
+*/
+h1, h2, h3, h4, h5, h6, .heading, #heading-one {
+	font-size: 40px;
+
+	/* 
+		!important
+		Force all target elements 
+		to use this syling
+	*/
+	color: red !important;
+}

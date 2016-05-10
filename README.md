@@ -1,3 +1,25 @@
+# Installation
+
+1. Laragon
+
+2. SQLYog Community
+
+# First PHP
+
+1. Go to `C:/laragon/www/`, create a folder named `training-php-mysql`
+
+2. Open up your browser and go to `http://localhost/training-php-mysql` - Please make sure to run Laragon first, then click on Start All (if ask for permission, just Allow)
+	
+
+
+
+
+
+
+
+
+
+
 TODO
 
 1. tasks.php
