@@ -10,17 +10,7 @@
 
 2. Open up your browser and go to `http://localhost/training-php-mysql` - Please make sure to run Laragon first, then click on Start All (if ask for permission, just Allow)
 	
-
-
-
-
-
-
-
-
-
-
-TODO
+# TODO App
 
 1. tasks.php
 	- list all available tasks

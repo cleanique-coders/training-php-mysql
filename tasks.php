@@ -39,6 +39,9 @@ $senarai_tugasan = [
 ?>
 <h3>Senarai Tugasan</h3>
 
+<a href="tasks-add.php" class="btn btn-success pull-right">
+  <span class="glyphicon glyphicon-plus"></span>
+</a>
 
 <table class="table">
   <tr>
@@ -52,11 +55,11 @@ $senarai_tugasan = [
       <td><?= $value['name']; ?></td>
       <td><?= $value['description']; ?></td>
       <td>
-          <a href="task-details.php?id=<?= $value['id']; ?>" class="btn btn-info">
+          <a href="tasks-info.php?id=<?= $value['id']; ?>" class="btn btn-info">
             <span class="glyphicon glyphicon-info-sign"></span>
           </a>
 
-          <a href="task-edit.php?id=<?= $value['id']; ?>" class="btn btn-primary">
+          <a href="tasks-edit.php?id=<?= $value['id']; ?>" class="btn btn-primary">
           <span class="glyphicon glyphicon-edit"></span>
           </a>
 
@@ -71,16 +74,9 @@ $senarai_tugasan = [
 <script type="text/javascript"> 
 function confirm_delete(id) {
   if(confirm('Are you sure want to delete this task?')) {
-    window.location = 'task-delete.php?id='+id;
+    window.location = 'tasks-delete.php?id='+id;
   }
 }
 </script>
-<ol>
-  <?php 
-    foreach ($senarai_tugasan as $key => $value) {
-      echo '<li>'.$value['name'].'</li>';
-    }
-  ?>  
-</ol>
 
 <?php require_once 'templates/_footer.php'; ?>
