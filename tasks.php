@@ -1,7 +1,8 @@
 <?php require_once 'templates/_header.php'; ?>
+<?php require_once 'inc/functions.php'; ?>
 <?php 
 
-$senarai_tugasan = [
+/*$senarai_tugasan = [
   [
     'id' => 1,
     'name' => 'Tugasa Pertama',
@@ -33,8 +34,18 @@ $senarai_tugasan = [
     'status' => 'Baru'
   ]
 
-];
+];*/
 
+
+$conn = connect(); // create connection
+$senarai_tugasan = []; // initialize empty array
+
+$sql = "SELECT * FROM tasks ORDER BY created_at DESC";
+foreach($conn->query($sql) as $row){
+     $senarai_tugasan[] = $row; 
+}
+
+//d($senarai_tugasan);
 
 ?>
 <h3>Senarai Tugasan</h3>

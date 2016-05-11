@@ -1,42 +1,62 @@
 <?php require_once 'templates/_header.php'; ?>
-<?php 
+<?php require_once 'inc/functions.php'; ?>
+<?php
+	if(!empty($_POST)) {
+		
+		$name = $_POST['name'];
+		$description = $_POST['description'];
+		$created_at = date('Y-m-d H:i:s');
 
-$senarai_tugasan = [
-  [
-    'id' => 1,
-    'name' => 'Tugasa Pertama',
-    'description' => 'Penerangan berkenaan tugasan pertama',
-    'status' => 'Baru'
-  ],
-  [
-    'id' => 2,
-    'name' => 'Tugasa Kedua',
-    'description' => 'Penerangan berkenaan tugasan Kedua',
-    'status' => 'Baru'
-  ],
-  [
-    'id' => 3,
-    'name' => 'Tugasa Ketiga',
-    'description' => 'Penerangan berkenaan tugasan Ketiga',
-    'status' => 'Baru'
-  ],
-  [
-    'id' => 4,
-    'name' => 'Tugasa Keempat',
-    'description' => 'Penerangan berkenaan tugasan Keempat',
-    'status' => 'Baru'
-  ],
-  [
-    'id' => 5,
-    'name' => 'Tugasa Kelima',
-    'description' => 'Penerangan berkenaan tugasan Kelima',
-    'status' => 'Baru'
-  ]
+		$sql = "INSERT INTO tasks (name,description,created_at) VALUES (:name,:description,:created_at)";
 
-];
+		$conn = connect();
+		$stmt = $conn->prepare($sql);
+		$stmt->bindParam(':name', $name);
+		$stmt->bindParam(':description', $description);
+		$stmt->bindParam(':created_at', $created_at);
 
-
+		if($stmt->execute()) {
+			header('Location: tasks.php');
+		}
+	}
 ?>
+
 <h3>Tambah Tugasan</h3>
+
+<form class="form-horizontal" method="post" action="tasks-add.php">
+<fieldset>
+
+<!-- Form Name -->
+<legend>New Task</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="name">Task Name</label>  
+  <div class="col-md-4">
+  <input id="name" name="name" type="text" placeholder="your task name" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="description">Task Description</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="description" name="description"></textarea>
+  </div>
+</div>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-8">
+    <button id="submit" name="submit" class="btn btn-success">Save</button>
+    <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
 
 <?php require_once 'templates/_footer.php'; ?>
