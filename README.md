@@ -23,7 +23,7 @@
 		- task's name
 		- task's description
 
-3. A form to update existing task - `tasks-update.php`
+3. A form to update existing task - `tasks-edit.php`
 	- please ensure task's id included in the form
 	- using method post
 
@@ -31,13 +31,13 @@
 
 5. Main Page - `index.php`
 	
-6. Process login form - `login.php
+6. Process login form - `login.php`
 
 7. Logout user from application - `logout.php`
 
 8. Only allow authorized user to access to the page, otherwise redirect user to login page (`index.php`)`inc/authorize.php`
 	
-9. Numbers of functions available - `inc/functions.php`
+9. Numbers of functions available - `inc/functions.php` - and also where `$_SESSION` intialized using `session_start()`
 	- `d($variable)` - Dump any variable in developer friendly way
 	- `connect()` - Connect to database using PDO
 	- `is_session_started()` - Check if session already started or not
