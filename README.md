@@ -12,23 +12,36 @@
 	
 # TODO App
 
-1. tasks.php
-	- list all available tasks
-		- each task can be edit & delete
-			- click edit will bring to tasks-update.php
-			- click delete will ask confirmation to delete, if ok, go to tasks-delete.php
+1. 	List all available tasks for the logged in user - `tasks.php`
+	- each task can be edit & delete
+		- click edit will bring to tasks-update.php
+		- click delete will ask confirmation to delete, if ok, go to `tasks-delete.php`
 	- have a button to add new task
 
-2. tasks-add.php
-	- a form to add new task
-		- inputs required:
-			- task's name
-			- task's description
+2. A form to add new task - `tasks-add.php`
+	- inputs required:
+		- task's name
+		- task's description
 
-3. tasks-update.php
-	- a form to update existing task
-		- please ensure task's id included in the form
-		- using method post
+3. A form to update existing task - `tasks-update.php`
+	- please ensure task's id included in the form
+	- using method post
 
-4. tasks-delete.php
-	- delete task from a table, based on id given
+4. Delete task from a table, based on id given - `tasks-delete.php`
+
+5. Main Page - `index.php`
+	
+6. Process login form - `login.php
+
+7. Logout user from application - `logout.php`
+
+8. Only allow authorized user to access to the page, otherwise redirect user to login page (`index.php`)`inc/authorize.php`
+	
+9. Numbers of functions available - `inc/functions.php`
+	- `d($variable)` - Dump any variable in developer friendly way
+	- `connect()` - Connect to database using PDO
+	- `is_session_started()` - Check if session already started or not
+	- `login()` - DEPRECATED
+
+10. Add `require_once 'inc/authorize.php';` in our application scripts, at the top after `require_once 'inc/functions.php';` in order to have protected page.
+	
