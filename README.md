@@ -47,3 +47,10 @@
 	
 11. Database - `db.sql`
 	- Please import using SQLYog or any preferred SQL Editor Tool
+
+
+12. Default password for following users are `1234`. Users can be add manually from SQLYog. Please ensure to add user's password with MD5 encryption.
+	- nasrul@gmail.com
+	- hazim@gmail.com
+	- mohd@gmail.com
+	- keramat@gmail.com
