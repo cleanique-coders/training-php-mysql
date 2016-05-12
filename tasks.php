@@ -1,11 +1,13 @@
 <?php require_once 'templates/_header.php'; ?>
 <?php require_once 'inc/functions.php'; ?>
+<?php require_once 'inc/authorize.php'; ?>
 <?php 
 
 $conn = connect(); // create connection
 $senarai_tugasan = []; // initialize empty array
 
-$sql = "SELECT * FROM tasks ORDER BY created_at DESC";
+$sql = "SELECT * FROM tasks WHERE user_id = '".$_SESSION['user']['id']."' ORDER BY created_at DESC";
+
 foreach($conn->query($sql) as $row){
      $senarai_tugasan[] = $row; 
 }

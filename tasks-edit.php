@@ -1,5 +1,7 @@
 <?php require_once 'templates/_header.php'; ?>
 <?php require_once 'inc/functions.php'; ?>
+<?php require_once 'inc/authorize.php'; ?>
+
 <?php
 
 	if(!empty($_GET) && isset($_GET['id'])) {

@@ -1,8 +1,6 @@
 <?php
 
-if(!isset($_SESSION)) {
-	session_start();
-}
+require_once 'inc/functions.php';
 
 doLogin($_POST['username'], md5($_POST['password']));
 
@@ -17,12 +15,13 @@ function doLogin($username, $password) {
 	if($statement->execute()) {
 		$user = $statement->fetch();
 	}
+
 	if(!empty($user)) {
 		$_SESSION['authorized'] = true;
 		$_SESSION['user'] = $user;
 		header('Location: tasks.php');
 	} else {
 		$_SESSION['error'] = 'Invalid credentials';
-		header('Location: login.php');
+		header('Location: index.php');
 	}
 }
