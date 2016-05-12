@@ -45,3 +45,5 @@
 
 10. Add `require_once 'inc/authorize.php';` in our application scripts, at the top after `require_once 'inc/functions.php';` in order to have protected page.
 	
+11. Database - `db.sql`
+	- Please import using SQLYog or any preferred SQL Editor Tool
