@@ -1,58 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-	
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	
-	<!-- Step 1: Include Bootstrap CSS -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	
-	<!-- Step 2: Download jQuery (https://jquery.com/download/#jquery-1-x) & Include jQuery -->
-	<!-- p/s: without jQuery, some of the Bootstrap Components will not working -->
-	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+<?php require_once 'templates/_header.php'; ?>
+<?php require_once 'inc/functions.php'; ?>
 
-	<!-- Step 3: Include Bootstrap JavaScript -->
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<div class="row" style="margin-top:30px">
+  <div class="col-lg-4 col-md-4 col-md-offset-4 col-md-offset-4 col-sm-offset-3 col-sm-6 col-xs-12">
+      <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><strong>Sign In </strong></h3></div>
+    <div class="panel-body">
+     <form role="form" method="post" action="login.php">
+    <div class="form-group">
+      <label for="username">Username or Email</label>
+      <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-block btn-success">Sign in</button>
+  </form>
+    </div>
+  </div>
+  </div>
+</div>
 
-</head>
-<body>
 
-    <style type="text/css">
-    .row > div {
-      background-color: red;
-      padding: 7px 7px;
-      border: white 7px solid;
-      min-height: 150px;
-    }
-    </style>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-2 col-lg-offset-2"></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-2"></div>
-      </div>
-      <div class="row">
-        <div class="col-lg-2 col-lg-offset-2"></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-2"></div>
-      </div>
-      <div class="row">
-        <div class="col-lg-2 col-lg-offset-2"></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-2"></div>
-      </div>
-      <div class="row">
-        <div class="col-lg-2 col-lg-offset-2"></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-2"></div>
-      </div>
-    </div><!-- /.container -->
-</body>
-</html>
+<?php require_once 'templates/_footer.php'; ?>

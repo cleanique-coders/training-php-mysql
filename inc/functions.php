@@ -5,6 +5,10 @@ define('DB_NAME', 'php_intim'); // define database name that we want to connect
 define('DB_USERNAME', 'php_intim'); // define username will be use to connect to database
 define('DB_PASSWORD', 'php_intim'); // define password for username to connect to database
 
+if(!isset($_SESSION)) {
+	session_start();
+}
+
 function d($value) {
 	echo '<pre>'.print_r($value,1).'</pre>';
 }
