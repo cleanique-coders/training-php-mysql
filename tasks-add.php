@@ -9,10 +9,11 @@
 		$description = $_POST['description'];
 		$created_at = date('Y-m-d H:i:s');
 
-		$sql = "INSERT INTO tasks (name,description,created_at) VALUES (:name,:description,:created_at)";
+		$sql = "INSERT INTO tasks (user_id,name,description,created_at) VALUES (:user_id,:name,:description,:created_at)";
 
 		$conn = connect();
 		$stmt = $conn->prepare($sql);
+		$stmt->bindParam(':user_id', $_SESSION['user']['id']);
 		$stmt->bindParam(':name', $name);
 		$stmt->bindParam(':description', $description);
 		$stmt->bindParam(':created_at', $created_at);
