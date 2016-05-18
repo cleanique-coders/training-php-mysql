@@ -5,7 +5,7 @@
 */
 class Database
 {
-	private $conn = null;
+	public static $conn = null;
 	private $config = [];
 
 	public function __construct(

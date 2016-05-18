@@ -2,6 +2,8 @@
 
 require_once '_inc_.php';
 
+Token::authorize();
+
 if(isset($_GET['id'])) {
 	$conn = connect();
 

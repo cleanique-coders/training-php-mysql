@@ -1,8 +1,11 @@
 <?php
 
-require_once '../_inc_.php';
+if(Header::isMethod('POST')) {
+	doLogin($_POST['username'], md5($_POST['password']));
+} else {
+	Response::output($_SERVER["REQUEST_METHOD"]);
+}
 
-doLogin($_POST['username'], md5($_POST['password']));
 
 function doLogin($username, $password) {
 	$conn = connect();
@@ -19,12 +22,11 @@ function doLogin($username, $password) {
 		$user = $statement->fetch();
 	}
 
+	// don't use session, use token instead
 	if(!empty($user)) {
-		$_SESSION['authorized'] = true;
-		$_SESSION['user'] = $user;
-		header('Location: ../dashboard.php');
+		$token = Token::generate($user['id']);
+		Response::output($token);
 	} else {
-		$_SESSION['error'] = 'Invalid credentials';
-		header('Location: ../login.php');
+		Response::output(null, 'Invalid credentials', false);
 	}
 }

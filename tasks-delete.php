@@ -2,6 +2,8 @@
 
 require_once '_inc_.php';
 
+Token::authorize();
+
 if(!empty($_GET)) {
 	// do delete here
 	$task_id = $_GET['id'];
