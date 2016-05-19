@@ -15,6 +15,10 @@ class Response {
 		Response::output(null,'Invalid request','false');
 	}
 
+	public static function error($message) {
+		Response::output(null, $message, false);
+	}
+
 	public static function kesAssoc($data) {
 		$_data = [];
 		foreach ($data as $key => $value) {

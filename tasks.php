@@ -6,7 +6,7 @@ Token::authorize();
 
 $conn = connect();
 
-$select_statement = $conn->prepare('SELECT * FROM tasks');
+$select_statement = $conn->prepare('SELECT * FROM tasks ORDER BY created_at DESC');
 $data = [];
 
 if($select_statement->execute()) { 

@@ -6,7 +6,6 @@ if(Header::isMethod('POST')) {
 	Response::output($_SERVER["REQUEST_METHOD"]);
 }
 
-
 function doLogin($username, $password) {
 	$conn = connect();
 
