@@ -4,9 +4,7 @@ class Header {
 	public static function allowAPICall(){
 		header('Access-Control-Allow-Origin: *'); 
 		header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
-
-		// more secure
-		// header('Access-Control-Allow-Headers: origin, x-requested-with, content-type, authorization, accept');
+		//header('Access-Control-Allow-Headers: origin, x-requested-with, content-type, authorization, accept');
 	}
 
 	public function isMethod($value) {

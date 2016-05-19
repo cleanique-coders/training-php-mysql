@@ -2,7 +2,7 @@
 
 require_once '../../_inc_.php';
 
-if(Header::isMethod('POST') || Header::isMethod('OPTIONS')) {
+if(Header::isMethod('POST') || Header::isMethod('OPTIONS') || Header::isMethod('GET')) {
 	doRegister();
 } else {
 	Response::output($_SERVER["REQUEST_METHOD"]);
