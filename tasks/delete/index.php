@@ -1,6 +1,6 @@
 <?php
 
-require_once '_inc_.php';
+require_once '../../_inc_.php';
 
 Token::authorize();
 
