@@ -1,12 +1,12 @@
 <?php
 
-require_once '../../_inc_.php';
+if(Header::isMethod('POST')) {
+	doLogin($_POST['username'], md5($_POST['password']));
+} else {
+	Response::output($_SERVER["REQUEST_METHOD"]);
+}
 
-if(Header::isMethod('GET') || Header::isMethod('OPTIONS')) {
-	
-	$username = $_GET['username'];
-	$password = md5($_GET['password']);
-
+function doLogin($username, $password) {
 	$conn = connect();
 
 	$sql = "select * from users where username = :username and password = :password";
@@ -26,9 +26,6 @@ if(Header::isMethod('GET') || Header::isMethod('OPTIONS')) {
 		$token = Token::generate($user['id']);
 		Response::output($token);
 	} else {
-		Response::output([$user,$username,$password,$dump], 'Invalid credentials', false);
+		Response::output(null, 'Invalid credentials', false);
 	}
-
-} else {
-	Response::output($_SERVER["REQUEST_METHOD"]);
 }
